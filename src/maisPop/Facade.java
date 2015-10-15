@@ -1,10 +1,13 @@
 package maisPop;
 
+import java.util.List;
+
 import easyaccept.EasyAccept;
+import usuariosexceptions.EntradaException;
 
 public class Facade {
 	
-	private System system;
+	private List<Usuario> usuarios;
 	
 	public static void main(String[] args) {
 	    args = new String[] {
@@ -13,15 +16,27 @@ public class Facade {
 	    EasyAccept.main(args);
 	}
 	
-	public void iniciaSistema(){
-			system.iniciaSistema();
-		}
+	public void iniciaSistema() {
+		//iniciar sistema
+	}
 	
 	public String cadastraUsuario(String nome, String email, String senha, String dataNasc, String imagem) throws Exception{
-		return system.cadastraUsuario(nome, email, senha, dataNasc, imagem);
+		Usuario novoUsuario = new Usuario(nome, email, senha, dataNasc, imagem);
+		if (getUsuarios().contains(novoUsuario))
+			throw new EntradaException("Usuario ja esta cadastrado no +Pop.");
+		usuarios.add(novoUsuario);
+		return email;
 	}
 	
 	public String cadastraUsuario(String nome, String email, String senha, String dataNasc) throws Exception{
-		return this.cadastraUsuario(nome, email, senha, dataNasc, "resources/default.jpg");
+		Usuario novoUsuario = new Usuario(nome, email, senha, dataNasc, "resources/default.png");
+		if (getUsuarios().contains(novoUsuario))
+			throw new EntradaException("Usuario ja esta cadastrado no +Pop.");
+		usuarios.add(novoUsuario);
+		return email;
+	}
+	
+	public List<Usuario> getUsuarios() {
+		return usuarios;
 	}
 }

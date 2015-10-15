@@ -9,6 +9,10 @@ public class Facade {
 	
 	private List<Usuario> usuarios;
 	
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
+	
 	public static void main(String[] args) {
 	    args = new String[] {
 	    		"maisPop.Facade",
@@ -32,9 +36,5 @@ public class Facade {
 		if (getUsuarios().contains(novoUsuario))
 			throw new EntradaException("Usuario ja esta cadastrado no +Pop.");
 		usuarios.add(novoUsuario);
-	}
-	
-	public List<Usuario> getUsuarios() {
-		return usuarios;
 	}
 }

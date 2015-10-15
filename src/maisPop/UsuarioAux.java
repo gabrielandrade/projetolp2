@@ -9,9 +9,9 @@ import java.util.regex.Pattern;
 
 import usuariosexceptions.ErroCadastroException;
 
-public class UtilUsuario {
+public class UsuarioAux {
 	
-	public UtilUsuario() {
+	public UsuarioAux() {
 		
 	}
 	

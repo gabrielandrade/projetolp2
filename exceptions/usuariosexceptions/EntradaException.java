@@ -1,6 +1,8 @@
 package usuariosexceptions;
 
 public class EntradaException extends Exception{
+	
+	//Cano de Escape dos exceptions
 
 	private String message = null;
 

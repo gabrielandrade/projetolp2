@@ -3,7 +3,7 @@ package maisPop;
 import java.text.ParseException;
 import java.util.Date;
 
-import usuariosexceptions.AtualizaPerfilException;
+import usuariosexceptions.AtualizaUsuarioException;
 
 public class Usuario {
 	
@@ -16,19 +16,19 @@ public class Usuario {
 		setEmail(email);
 		setSenha(senha);
 		setNome(nome);
-		this.dataNasc = UtilUsuario.formataData(dataNasc);
+		this.dataNasc = UsuarioAux.formataData(dataNasc);
 	}
 	
 	public String getEmail() {
 		return email;
 	}
-	public void setEmail(String email) throws AtualizaPerfilException {
-		if (UtilUsuario.validaEmail(email) == false)
+	public void setEmail(String email) throws AtualizaUsuarioException {
+		if (UsuarioAux.validaEmail(email) == false)
 			if (email != null){
-				throw new AtualizaPerfilException(
+				throw new AtualizaUsuarioException(
 						"Erro na atualizacao de perfil. Formato de e-mail esta invalido.");
 			}else{
-				throw new AtualizaPerfilException("Email nao pode ser nulo ou vazio.");
+				throw new AtualizaUsuarioException("Email nao pode ser nulo ou vazio.");
 			}
 		this.email = email;
 	}
@@ -41,9 +41,9 @@ public class Usuario {
 	public String getNome() {
 		return nome;
 	}
-	public void setNome(String nome) throws AtualizaPerfilException {
+	public void setNome(String nome) throws AtualizaUsuarioException {
 		if (nome == null || nome.equals(""))
-			throw new AtualizaPerfilException(
+			throw new AtualizaUsuarioException(
 					"Erro na atualizacao de perfil. Nome dx usuarix nao pode ser vazio.");
 		this.nome = nome;
 	}
@@ -52,23 +52,23 @@ public class Usuario {
 		return dataNasc;
 	}
 
-	public void setDataNasc(String novaDataNasc) throws AtualizaPerfilException, ParseException{
-		if (UtilUsuario.validaDiaDaData(novaDataNasc) == true
-				|| UtilUsuario.validaIntervalosDeData(novaDataNasc) == false)
-			throw new AtualizaPerfilException(
+	public void setDataNasc(String novaDataNasc) throws AtualizaUsuarioException, ParseException{
+		if (UsuarioAux.validaDiaDaData(novaDataNasc) == true
+				|| UsuarioAux.validaIntervalosDeData(novaDataNasc) == false)
+			throw new AtualizaUsuarioException(
 					"Erro na atualizacao de perfil. Formato de data esta invalida.");
-		if (UtilUsuario.isDateValid(novaDataNasc) == false)
-			throw new AtualizaPerfilException(
+		if (UsuarioAux.isDateValid(novaDataNasc) == false)
+			throw new AtualizaUsuarioException(
 					"Erro na atualizacao de perfil. Data nao existe.");
-		this.dataNasc = UtilUsuario.formataData(novaDataNasc);
+		this.dataNasc = UsuarioAux.formataData(novaDataNasc);
 	}
 
 	public String getImagem() {
 		return imagem;
 	}
-	public void setImagem(String imagem) throws AtualizaPerfilException {
+	public void setImagem(String imagem) throws AtualizaUsuarioException {
 		if (nome == null || nome.equals(""))
-			throw new AtualizaPerfilException("Imagem nao pode ser nula ou vazia.");
+			throw new AtualizaUsuarioException("Imagem nao pode ser nula ou vazia.");
 		this.imagem = imagem;
 	}
 }

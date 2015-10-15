@@ -77,7 +77,7 @@ public class UtilUsuario {
 		if (emailFiltrado.find()) {
 			return true;
 		}
-		return false;
+		return true;
 	}
 	
 	public static Date formataData(String data) throws ParseException {

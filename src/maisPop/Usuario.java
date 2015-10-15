@@ -24,10 +24,12 @@ public class Usuario {
 	}
 	public void setEmail(String email) throws AtualizaPerfilException {
 		if (UtilUsuario.validaEmail(email) == false)
-			throw new AtualizaPerfilException(
-					"Erro na atualizacao de perfil. Formato de e-mail esta invalido.");
-		if (email == null || email.equals(""))
-			throw new AtualizaPerfilException("Email nao pode ser nulo ou vazio.");
+			if (email != null){
+				throw new AtualizaPerfilException(
+						"Erro na atualizacao de perfil. Formato de e-mail esta invalido.");
+			}else{
+				throw new AtualizaPerfilException("Email nao pode ser nulo ou vazio.");
+			}
 		this.email = email;
 	}
 	public String getSenha() {

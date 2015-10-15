@@ -20,20 +20,18 @@ public class Facade {
 		//iniciar sistema
 	}
 	
-	public String cadastraUsuario(String nome, String email, String senha, String dataNasc, String imagem) throws Exception{
+	public void cadastraUsuario(String nome, String email, String senha, String dataNasc, String imagem) throws Exception{
 		Usuario novoUsuario = new Usuario(nome, email, senha, dataNasc, imagem);
 		if (getUsuarios().contains(novoUsuario))
 			throw new EntradaException("Usuario ja esta cadastrado no +Pop.");
 		usuarios.add(novoUsuario);
-		return email;
 	}
 	
-	public String cadastraUsuario(String nome, String email, String senha, String dataNasc) throws Exception{
+	public void cadastraUsuario(String nome, String email, String senha, String dataNasc) throws Exception{
 		Usuario novoUsuario = new Usuario(nome, email, senha, dataNasc, "resources/default.png");
 		if (getUsuarios().contains(novoUsuario))
 			throw new EntradaException("Usuario ja esta cadastrado no +Pop.");
 		usuarios.add(novoUsuario);
-		return email;
 	}
 	
 	public List<Usuario> getUsuarios() {
